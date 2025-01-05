@@ -23,7 +23,7 @@ const Home = () => {
       <section className="featured-listings">
         <h2>Featured Listings</h2>
         <div className="listings-grid">
-        {listings.map((listing, i)=><Listing key={i} img={listing.image} renter={listing.user.name} price={listing.price} available={''} address={listing.address}/>)}
+        {listings&&listings.map((listing, i)=><Listing key={i} img={listing.image} renter={listing.user.name} price={listing.price} available={''} address={listing.address}/>)}
         </div>
       </section>
 

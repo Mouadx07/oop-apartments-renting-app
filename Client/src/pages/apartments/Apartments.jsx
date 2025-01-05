@@ -42,6 +42,7 @@ const Apartments = () => {
 
 
   let navigate = useNavigate();
+
   function available(listing){
     //console.log(listing.bookings)
     if (listing.bookings.length>0){
@@ -56,7 +57,7 @@ const Apartments = () => {
     <h2>Discover Apartments </h2>
     <div className="listings-container">
      
-      {listings.map((listing, i)=><Listing key={i} img={listing.image} renter={listing.user.name} price={listing.price} available={available(listing)?'Available':'Not Available'} address={listing.address} onClick={() => handleCardClick(listing)}/>)}
+      {listings&&listings.map((listing, i)=><Listing key={i} img={listing.image} renter={listing.user.name} price={listing.price} available={available(listing)?'Available':'Not Available'} address={listing.address} onClick={() => handleCardClick(listing)}/>)}
       
       
 
