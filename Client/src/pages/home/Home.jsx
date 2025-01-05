@@ -7,8 +7,8 @@ const Home = () => {
   const [listings, setLisitngs] = useState([])
   const [loading, setLoading] = useState(true)
   useEffect(()=>{
-    getAllApartments().then(data=>{setLisitngs(data.apartments)});
-  })
+    getAllApartments().then(data=>{setLisitngs(data.apartments.slice(0 , 3))});
+  }, [])
   return (
     <div className="home">
       <section className="hero">
