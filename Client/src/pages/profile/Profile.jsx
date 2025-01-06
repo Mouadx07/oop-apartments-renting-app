@@ -51,7 +51,7 @@ const Profile = () => {
         
         <h2>Your Listings</h2>
         <div className='listings-container'>
-        {listings.map((listing, i) => <Listing key={i} img={listing.image} renter={user.name} price={listing.price} available={available(listing)?'Available':'Not Available'} address={listing.address} id={listing.id} onClick={() => {}} onDelete={handleDelete}/>)}
+        {listings.map((listing, i) => <Listing key={i} img={listing.image} renter={user.name} price={listing.price} available={listing.available} address={listing.address} id={listing.id} onClick={() => {}} onDelete={handleDelete}/>)}
         
         </div>
         <h2>Your Bookings History</h2>

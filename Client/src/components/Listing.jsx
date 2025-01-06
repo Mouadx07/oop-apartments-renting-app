@@ -7,7 +7,7 @@ import {deleteApartment} from '/src/utils/api'
 
 
 function Listing({img, renter, price, address, available, onClick, id=false, onDelete={}}){
-  console.log(available)
+  //console.log(available)
   const navigate = useNavigate();
   function handleDelete(){
  
@@ -31,7 +31,7 @@ function Listing({img, renter, price, address, available, onClick, id=false, onD
               <h3 className='listing-title'>{address}</h3>
               <div className='listing-desc'>
                   <p id="renter">Owner: {renter}</p>
-                  <p>{available}</p>
+                  <p>{available?'Available':'Not Available'}</p>
               </div>
               
                 <p id="price">{price} MAD</p>

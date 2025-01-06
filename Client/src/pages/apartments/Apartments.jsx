@@ -27,7 +27,8 @@ const Apartments = () => {
   // ]
   const [listings, setListings] = useState([]);
   useEffect(()=>{
-    const data = getAllApartments().then(data=>{
+    getAllApartments().then(data=>{
+      console.log(data.apartments.address)
       setListings(data.apartments)
       //console.log(data.apartments[0].user)
     })
@@ -57,7 +58,7 @@ const Apartments = () => {
     <h2>Discover Apartments </h2>
     <div className="listings-container">
      
-      {listings&&listings.map((listing, i)=><Listing key={i} img={listing.image} renter={listing.user.name} price={listing.price} available={available(listing)?'Available':'Not Available'} address={listing.address} onClick={() => handleCardClick(listing)}/>)}
+      {listings&&listings.map((listing, i)=><Listing key={i} img={listing.image} renter={listing.user.name} price={listing.price} available={listing.available} address={listing.address} onClick={() => handleCardClick(listing)}/>)}
       
       
 

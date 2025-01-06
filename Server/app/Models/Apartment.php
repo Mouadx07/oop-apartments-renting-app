@@ -16,8 +16,13 @@ class Apartment extends Model
         'price',
         'user_id',
     ];
+    protected $appends = ['available'];
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    public function getAvailableAttribute(){
+        $booking = $this->bookings()->latest('ends')->first();
+        return !$booking || $booking->ends < now();
     }
     public function bookings(){
         return $this->hasMany(Booking::class);

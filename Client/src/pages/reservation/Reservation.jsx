@@ -59,15 +59,15 @@ const Reservation = () => {
     }
     
   }
-  function available(listing){
+  // function available(listing){
     
-    if (listing.bookings.length>0){
-      //console.log(Date.now()<Date.parse(listing.bookings[0].ends))
-      return Date.now()>Date.parse(listing.bookings[0].ends)
+  //   if (listing.bookings.length>0){
+  //     //console.log(Date.now()<Date.parse(listing.bookings[0].ends))
+  //     return Date.now()>Date.parse(listing.bookings[0].ends)
       
-    }
-    return true
-  }
+  //   }
+  //   return true
+  // }
   return (
     <>{!loading?
       <div className="reservation">
@@ -89,7 +89,7 @@ const Reservation = () => {
               <p> <b>Owner:</b> {listing.user.name}</p>
               <p><b>Number Of Rooms:</b> {listing.rooms}</p>
               <p><b>Phone Number:</b> {listing.user.phone}</p>
-              <p><b>Availability Status:</b> {available(listing)?'Available': 'Not Available'}</p>
+              <p><b>Availability Status:</b> {listing.available}</p>
               <div className="book">
                 <div className="nights">
                 <label htmlFor="nights" ><b>Nights:</b> </label>
@@ -99,14 +99,14 @@ const Reservation = () => {
                 <p id='price'>{price} MAD</p>
               </div>
               
-              <button className={!available(listing)?'reserve-btn not-available-btn':'available-btn'} onClick={()=>{
+              <button className={!listing.available?'reserve-btn not-available-btn':'available-btn'} onClick={()=>{
                 if (!userId){
                   navigate('/login');
                   return
                 }
                 setPaymentOpened(true);
 
-              }} disabled={available(listing)?false:true}>Reserve</button>
+              }} disabled={listing.available?false:true}>Reserve</button>
           </div>
         </div>
         {paymentOpened&& 

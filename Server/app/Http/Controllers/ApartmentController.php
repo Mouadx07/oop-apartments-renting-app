@@ -20,6 +20,7 @@ class ApartmentController extends Controller
         $apartment = Apartment::with('user:id,name,phone')->with(['bookings'=>function($query){
             $query->orderBy('ends', 'desc');
         }])->findOrFail($id);
+
         return response()->json(["success"=>true,'apartments'=> $apartment],200);
     }
     public function store(Request $request) {
